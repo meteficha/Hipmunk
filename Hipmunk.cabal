@@ -3,7 +3,7 @@ Build-Type:    Simple
 Tested-With:   GHC
 Category:      Physics, Game
 Name:          Hipmunk
-Version:       5.2.0.11
+Version:       5.2.0.12
 Stability:     provisional
 License:       OtherLicense
 License-File:  LICENSE
