@@ -11,7 +11,7 @@ Copyright:     (c) 2008-2011 Felipe A. Lessa
 Author:        Felipe A. Lessa <felipe.lessa@gmail.com>
 Maintainer:    Felipe A. Lessa <felipe.lessa@gmail.com>, Sönke Hahn <shahn@joyridelabs.de>
 Synopsis:      A Haskell binding for Chipmunk.
-Homepage:      http://patch-tag.com/r/felipe/hipmunk/home
+Homepage:      https://github.com/meteficha/Hipmunk
 Description:
       Chipmunk is a fast, simple, portable, 2D physics engine
       (<http://code.google.com/p/chipmunk-physics/>).  This
@@ -134,8 +134,8 @@ Extra-Source-Files:
       Physics/Hipmunk/wrapper.h
 
 source-repository head
-  type:     darcs
-  location: http://patch-tag.com:/r/felipe/hipmunk
+  type:     git
+  location: git://github.com/meteficha/Hipmunk.git
 
 Flag small_base
   Description: Choose the new smaller, split-up base package.
