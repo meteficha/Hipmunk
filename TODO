@@ -1,0 +1,4 @@
+- Update to Chipmunk 6
+- Provide bindings for all functionality in Chipmunk 5.3.4.
+  * Sleeping bodies
+  * ...?

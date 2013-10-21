@@ -1,0 +1,82 @@
+Version 5.2.0.6
+===============
+ - Fixed a memory leak related to collision handlers.
+
+Version 5.2.0.5
+===============
+ - Always compile @wrapper.c@ and fix Haddock errors
+   while handling Unicode.  Thanks, Joachim Breitner.
+
+Version 5.2.0.4
+===============
+ - New system-chipmunk flag.  When activated, the package will
+   use the system-wide installed Chipmunk library.  Thanks,
+   Joachim Breitner.
+
+Version 5.2.0.3
+===============
+ - Update to Chipmunk 5.3.5 and bump dependencies to
+   match GHC 7.2.1. (Thanks, Sönke Hahn!)
+ - Now Sönke Hahn is also a Hipmunk maintainer.  Awesome!
+
+Version 5.2.0.2
+===============
+ - Update to Chipmunk 5.3.4.  Note, however, that not all
+   functionality available in Chipmunk 5.3.4 is here yet.  But
+   the bug fixes and performance improvements are.
+ - Fix linking bug present since Hipmunk 5.1.0.  Thanks, Sönke Hahn.
+ - Correctly destroy the space in the presence of callbacks.
+ - Workaround difficult-to-reproduce bug in Chipmunk where the
+   number of contact points in an arbiter would get garbage.
+   When that happens (and the garbage does look like garbage) we
+   give an empty list of contact points.
+
+Version 5.2.0.1
+===============
+ - Minor documentation fixes.
+
+Version 5.2.0
+=============
+ - Use package StateVar for all variables.
+ - Do not use Chipmunk's debug mode.
+
+Version 5.1.0
+=============
+ - Updated to Chipmunk 5.0 revision 402.  'setElasticIterations'
+   is now deprecated.
+ - New, revamped callback system.  See module
+   "Physics.Hipmunk.Callbacks".
+ - Support for the new ratchet joint.  Thanks, Owen Anderson.
+ - Support for limits on linear and angular velocities.
+ - @shapePointQuery@ and @shapeSegmentQuery@ don't filter groups
+   and layers anymore.
+
+Version 5.0.1
+=============
+ - Updated dependencies for GHC 6.12.  Thanks, dons.
+
+Version 5.0.0
+=============
+ - Updated for a prerelease of Chipmunk 5.0 from subversion
+   revision 192.  Besides bugfixes this new version brings the
+   long awaited new constraints type, doubling the number of
+   different joint from four to nine.
+
+Version 0.2.2
+=============
+ - Update Chipmunk to version 4.1.0.
+
+Version 0.2.1
+=============
+ - Small fix for GHC 6.10. Thanks Pekka Karjalainen and Creighton Hogg
+   for the reports, and sorry for the delay.
+
+Version 0.2
+===========
+ - Fix a subtle bug within Space that would keep some ForeignPtr's
+   alive longer than needed, thus leaking memory.
+
+
+Version 0.1
+===========
+ - Initial public release.

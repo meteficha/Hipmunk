@@ -1,0 +1,6 @@
+dist
+*.hi
+*.o
+TAGS
+*~
+_darcs
