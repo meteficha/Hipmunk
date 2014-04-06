@@ -3,7 +3,7 @@ Build-Type:    Simple
 Tested-With:   GHC
 Category:      Physics, Game
 Name:          Hipmunk
-Version:       5.2.0.12
+Version:       5.2.0.13
 Stability:     provisional
 License:       OtherLicense
 License-File:  LICENSE
@@ -206,7 +206,7 @@ Library
 
   if flag(small_base)
     Build-Depends: base >= 3 && < 5,
-                   array >= 0.1 && < 0.5,
+                   array >= 0.1 && < 0.6,
                    containers >= 0.1 && < 0.6,
                    transformers >= 0.2 && < 0.4,
                    StateVar >= 1.0 && < 1.1
