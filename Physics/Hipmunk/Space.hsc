@@ -62,6 +62,9 @@ import Control.Monad (when)
 import Data.IORef
 import Data.StateVar
 import Foreign hiding (new)
+#if MIN_VERSION_base(4,4,0)
+import Foreign.ForeignPtr.Unsafe (unsafeForeignPtrToPtr)
+#endif
 import Foreign.C.Types (CInt(..))
 #include "wrapper.h"
 
