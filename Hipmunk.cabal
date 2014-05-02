@@ -3,11 +3,11 @@ Build-Type:    Simple
 Tested-With:   GHC
 Category:      Physics, Game
 Name:          Hipmunk
-Version:       5.2.0.13
+Version:       5.2.0.14
 Stability:     provisional
 License:       OtherLicense
 License-File:  LICENSE
-Copyright:     (c) 2008-2011 Felipe A. Lessa
+Copyright:     (c) 2008-2014 Felipe A. Lessa
 Author:        Felipe A. Lessa <felipe.lessa@gmail.com>
 Maintainer:    Felipe A. Lessa <felipe.lessa@gmail.com>, Sönke Hahn <shahn@joyridelabs.de>
 Synopsis:      A Haskell binding for Chipmunk.
@@ -19,6 +19,10 @@ Description:
       all of its functions. It is completely self-contained.
       Please see <http://hackage.haskell.org/package/HipmunkPlayground>
       for a demonstration of this library.
+      .
+      Version 5.2.0.14:
+      .
+      * Compatibility with GHC 7.8. (Thanks, Michael Tolly!)
       .
       Version 5.2.0.11:
       .
