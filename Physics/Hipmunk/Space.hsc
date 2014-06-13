@@ -62,7 +62,7 @@ import Control.Monad (when)
 import Data.IORef
 import Data.StateVar
 import Foreign hiding (new)
-#if MIN_VERSION_base(4,4,0)
+#if MIN_VERSION_base(4,7,0)
 import Foreign.ForeignPtr.Unsafe (unsafeForeignPtrToPtr)
 #endif
 import Foreign.C.Types (CInt(..))
@@ -425,4 +425,3 @@ step (P sp _ callbacks) dt = do
 -- IMPORTANT! This call can (and probably will) callback into Haskell.
 foreign import ccall {- !!! -} safe {- !!! -}
     cpSpaceStep :: SpacePtr -> Time -> IO ()
-
