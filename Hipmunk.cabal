@@ -3,7 +3,7 @@ Build-Type:    Simple
 Tested-With:   GHC
 Category:      Physics, Game
 Name:          Hipmunk
-Version:       5.2.0.14
+Version:       5.2.0.15
 Stability:     provisional
 License:       OtherLicense
 License-File:  LICENSE
@@ -19,6 +19,10 @@ Description:
       all of its functions. It is completely self-contained.
       Please see <http://hackage.haskell.org/package/HipmunkPlayground>
       for a demonstration of this library.
+      .
+      Version 5.2.0.15:
+      .
+      * Fix for working with GHC 7.6 again.
       .
       Version 5.2.0.14:
       .
