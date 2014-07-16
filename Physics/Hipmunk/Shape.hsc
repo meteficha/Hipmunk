@@ -65,7 +65,7 @@ module Physics.Hipmunk.Shape
     where
 
 import Data.List (foldl', sortBy)
-import Data.StateVar
+import Graphics.Rendering.OpenGL.GL.StateVar
 import Foreign hiding (rotate, new)
 import Foreign.C
 #include "wrapper.h"

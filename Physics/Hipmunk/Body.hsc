@@ -64,7 +64,7 @@ module Physics.Hipmunk.Body
     )
     where
 
-import Data.StateVar
+import Graphics.Rendering.OpenGL.GL.StateVar
 import Foreign hiding (rotate, new)
 #include "wrapper.h"
 

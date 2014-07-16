@@ -60,7 +60,7 @@ import qualified Data.Map as M
 import Control.Exception (bracket)
 import Control.Monad (when)
 import Data.IORef
-import Data.StateVar
+import Graphics.Rendering.OpenGL.GL.StateVar
 import Foreign hiding (new)
 #if MIN_VERSION_base(4,7,0)
 import Foreign.ForeignPtr.Unsafe (unsafeForeignPtrToPtr)

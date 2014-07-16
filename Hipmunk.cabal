@@ -217,7 +217,7 @@ Library
                    array >= 0.1 && < 0.6,
                    containers >= 0.1 && < 0.6,
                    transformers >= 0.2 && < 0.4,
-                   StateVar >= 1.0 && < 1.1
+                   OpenGL
   else
     Build-Depends: base >= 2 && < 3,
                    transformers >= 0.2 && < 0.3,
