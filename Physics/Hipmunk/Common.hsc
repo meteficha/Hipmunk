@@ -95,7 +95,7 @@ module Physics.Hipmunk.Common
     )
     where
 
-import Data.StateVar
+import Graphics.Rendering.OpenGL.GL.StateVar
 import Foreign hiding (rotate)
 import Foreign.C.Types (CInt)
 #include "wrapper.h"
