@@ -223,11 +223,11 @@ Library
                    array >= 0.1 && < 0.6,
                    containers >= 0.1 && < 0.6,
                    transformers >= 0.2 && < 0.5,
-                   StateVar >= 1.0 && < 1.1
+                   StateVar >= 1.0 && < 1.2
   else
     Build-Depends: base >= 2 && < 3,
-                   transformers >= 0.2 && < 0.3,
-                   StateVar >= 1.0 && < 1.1
+                   transformers >= 0.2 && < 0.5,
+                   StateVar >= 1.0 && < 1.2
 
   Extensions:    CPP, ForeignFunctionInterface, EmptyDataDecls
   Build-Tools:   hsc2hs
