@@ -1,9 +1,9 @@
-Cabal-Version: >= 1.10
+Cabal-Version: >= 1.6
 Build-Type:    Simple
 Tested-With:   GHC
 Category:      Physics, Game
 Name:          Hipmunk
-Version:       5.2.0.16
+Version:       6.2.2.1
 Stability:     provisional
 License:       OtherLicense
 License-File:  LICENSE
