@@ -154,7 +154,7 @@ Flag small_base
 
 Flag debug
   Description: Enable debugging.
-  Default: True
+  Default: False
 
 Flag system-chipmunk
   Description: Use the system-wide installed chipmunk library
@@ -238,23 +238,3 @@ Library
   else
     CC-Options:  -DNDEBUG
   Extra-Libraries: m
-
-executable testmain
-  main-is:          hipmunkplay2.hs
-  build-depends:    UISF >= 0.3.0.1 && < 0.3.0.2,
-                    Hipmunk >= 5.2.0.16 && < 5.2.0.17,
-                    base >= 2 && < 5,
-                    StateVar >= 1.0 && < 1.1,
-                    transformers >= 0.2 && < 0.5
-  default-language: Haskell2010
-
-executable hplayground
-  main-is:          playground.hs
-  build-depends:    base >= 2 && < 5,
-                    containers >= 0.1 && < 0.6,
-                    Hipmunk >= 5.2 && < 5.3,
-                    transformers >= 0.2 && < 0.5,
-                    OpenGL >= 2.8 && < 2.12,
-                    StateVar >= 1.0 && < 1.1,
-                    GLFW >= 0.4 && < 0.6
-  default-language: Haskell2010
