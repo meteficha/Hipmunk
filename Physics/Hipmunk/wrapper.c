@@ -8,10 +8,12 @@ void wrBodyUpdateVelocity(cpBody *b, cpVect *g, cpFloat d, cpFloat dt) {
 void wrBodyApplyImpulse(cpBody *b, cpVect *j, cpVect *r) {
     cpBodyApplyImpulse(b, *j, *r);
 }
+/*
 void wrApplyDampedSpring(cpBody *b1, cpBody *b2, cpVect *a1, cpVect *a2,
                          cpFloat rlen, cpFloat k, cpFloat dmp, cpFloat dt) {
     cpApplyDampedSpring(b1, b2, *a1, *a2, rlen, k, dmp, dt);
 }
+*/
 void wrBodyLocal2World(cpBody *b, cpVect *v) {
     cpVect ret = cpBodyLocal2World(b, *v);
     v->x = ret.x;
@@ -114,6 +116,18 @@ void wrArbiterGetNormal(cpArbiter *arb, cpVect *ret) {
 void wrSpacePointQuery(cpSpace *space, cpVect *point, cpLayers layers,
                        cpGroup group, cpSpacePointQueryFunc func) {
     cpSpacePointQuery(space, *point, layers, group, func, NULL);
+}
+
+void wrSpaceEachBody(cpSpace *space, cpSpaceBodyIteratorFunc func) {
+  cpSpaceEachBody(space, func, NULL);
+}
+
+void wrSpaceEachShape(cpSpace *space, cpSpaceShapeIteratorFunc func) {
+  cpSpaceEachShape(space, func, NULL);
+}
+
+void wrSpaceEachConstraint(cpSpace *space, cpSpaceConstraintIteratorFunc func) {
+  cpSpaceEachConstraint(space, func, NULL);
 }
 
 // From chipmunk_unsafe.h
