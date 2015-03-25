@@ -63,20 +63,20 @@ module Physics.Hipmunk.Common
 
      -- ** Contact persistence
      -- $contact_persistence
-     contactPersistence,
+     --contactPersistence,
 
      -- ** Collision slop
      -- $collision_slop
-     collisionSlop,
+     --collisionSlop,
 
      -- ** Bias coefficient
      -- $bias_coef
      BiasCoef,
-     biasCoef,
+     --biasCoef,
 
      -- ** Constraint bias coefficient
      -- $constraint_bias_coef
-     constraintBiasCoef,
+     --constraintBiasCoef,
 
      -- * Vectors
      Vector(..),
@@ -164,59 +164,10 @@ resetShapeCounter = cpResetShapeIdCounter
 foreign import ccall unsafe "wrapper.h"
     cpResetShapeIdCounter :: IO ()
 
-
--- $contact_persistence
---   This variable determines how long contacts should persist.
---   It should be small as the cached contacts will only be
---   close for a short time. (default is 3)
-
-contactPersistence :: StateVar CInt
-contactPersistence = makeStateVarFromPtr cp_contact_persistence
-
 makeStateVarFromPtr :: Storable a => Ptr a -> StateVar a
 makeStateVarFromPtr p = makeStateVar (peek p) (poke p)
 
-foreign import ccall unsafe "wrapper.h &cp_contact_persistence"
-    cp_contact_persistence :: Ptr CInt
-
-
--- $collision_slop
---   The collision slop is the amount that shapes are allowed to
---   penetrate. Setting this to zero will work just fine, but using a
---   small positive amount will help prevent oscillating
---   contacts. (default is 0.1)
-
-collisionSlop :: StateVar CpFloat
-collisionSlop = makeStateVarFromPtr cp_collision_slop
-
-foreign import ccall unsafe "wrapper.h &cp_collision_slop"
-    cp_collision_slop :: Ptr CpFloat
-
-
--- $bias_coef
---   The amount of penetration to reduce in each step. Values should
---   range from 0 to 1. Using large values will eliminate penetration in
---   fewer steps, but can cause vibration. (default is 0.1)
 type BiasCoef = CpFloat
-
-biasCoef :: StateVar BiasCoef
-biasCoef = makeStateVarFromPtr cp_bias_coef
-
-foreign import ccall unsafe "wrapper.h &cp_bias_coef"
-    cp_bias_coef :: Ptr CpFloat
-
-
--- $constraint_bias_coef
---   Similar to the bias coefficient, but sets the default bias
---   for all constraints. (default is 0.1)
-
-constraintBiasCoef :: StateVar BiasCoef
-constraintBiasCoef = makeStateVarFromPtr cp_constraint_bias_coef
-
-foreign import ccall unsafe "wrapper.h &cp_constraint_bias_coef"
-    cp_constraint_bias_coef :: Ptr CpFloat
-
-
 
 -- | A two-dimensional vector. It is an instance of 'Num'
 --   however the operations 'signum' and @(*)@ are not

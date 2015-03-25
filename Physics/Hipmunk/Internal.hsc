@@ -33,10 +33,14 @@ module Physics.Hipmunk.Internal
      Callbacks(..),
      HandlerFunPtrs,
      unP,
-     retriveShape,
      freeHandlerFunPtrs,
 
      Entity(..),
+
+     Retrievable(..),
+     retrieveShape,
+     retrieveBody,
+     retrieveConstraint,
 
      ArbiterPtr,
 
@@ -146,7 +150,8 @@ data Space = P !(ForeignPtr Space)
                !(IORef Entities)   -- Active and static entities
                !(IORef Callbacks)  -- Added callbacks
 type SpacePtr  = Ptr Space
-type Entities  = Map (Ptr ()) (Either (ForeignPtr ()) Shape)
+data Retrievable = ReS Shape | ReB Body | ReC (Constraint Unknown)
+type Entities  = Map (Ptr ()) Retrievable
 data Callbacks = CBs {cbsDefault  :: HandlerFunPtrs
                      ,cbsHandlers :: Map (CollisionType_, CollisionType_) HandlerFunPtrs
                      ,cbsPostStep :: [FunPtr ()]}
@@ -163,20 +168,35 @@ instance Eq Space where
 instance Ord Space where
     P s1 _ _ `compare` P s2 _ _ = s1 `compare` s2
 
--- | Internal. Retrive a 'Shape' from a 'ShapePtr' and a 'Space'.
-retriveShape :: Space -> ShapePtr -> IO Shape
-retriveShape (P _ entities _) ptr = do
+-- | Internal. Retrieve a 'Shape' from a 'ShapePtr' and a 'Space'.
+retrieveShape :: Space -> ShapePtr -> IO (Maybe Shape)
+retrieveShape (P _ entities _) ptr = do
   ent <- readIORef entities
-  let Just (Right shape) = M.lookup (castPtr ptr) ent
-  return shape
+  case M.lookup (castPtr ptr) ent of
+    Just (ReS shape) -> return $ Just shape
+    _ -> return Nothing
+
+-- | Internal. Retrieve a 'Body' from a 'BodyPtr' and a 'Space'.
+retrieveBody :: Space -> BodyPtr -> IO (Maybe Body)
+retrieveBody (P _ entities _) ptr = do
+  ent <- readIORef entities
+  case M.lookup (castPtr ptr) ent of
+    Just (ReB body) -> return $ Just body
+    _ -> return Nothing
+
+-- | Internal. Retrieve a 'Constraint' from a 'ConstraintPtr' and a 'Space'.
+retrieveConstraint :: Space -> ConstraintPtr -> IO (Maybe (Constraint Unknown))
+retrieveConstraint (P _ entities _) ptr = do
+  ent <- readIORef entities
+  case M.lookup (castPtr ptr) ent of
+    Just (ReC constraint) -> return $ Just constraint 
+    _ -> return Nothing
+
 
 -- | Internal.  Free all function pointers of this handler.
 freeHandlerFunPtrs :: HandlerFunPtrs -> IO ()
 freeHandlerFunPtrs (p1,p2,p3,p4) = f p1 >> f p2 >> f p3 >> f p4
     where f p = when (p /= nullFunPtr) (freeHaskellFunPtr p)
-
-
-
 
 -- | Type class implemented by entities that can be
 --   added to a space.

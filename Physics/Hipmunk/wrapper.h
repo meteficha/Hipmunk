@@ -2,12 +2,13 @@
 #define WRAPPER_H
 #include <stdlib.h>
 #include "chipmunk.h"
+#include "chipmunk_private.h"
 #include "chipmunk_unsafe.h"
 
 // From cpBody.h
 void wrBodyUpdateVelocity(cpBody*, cpVect*, cpFloat, cpFloat);
 void wrBodyApplyImpulse(cpBody*, cpVect*, cpVect*);
-void wrDampedSpring(cpBody*, cpBody*, cpVect*, cpVect*, cpFloat, cpFloat, cpFloat, cpFloat);
+//void wrDampedSpring(cpBody*, cpBody*, cpVect*, cpVect*, cpFloat, cpFloat, cpFloat, cpFloat);
 void wrBodyLocal2World(cpBody*, cpVect*);
 void wrBodyWorld2Local(cpBody*, cpVect*);
 void wrBodyApplyForce(cpBody*, cpVect*, cpVect*);
@@ -42,6 +43,9 @@ void wrArbiterGetNormal(cpArbiter*, cpVect*);
 
 // From cpSpace.h
 void wrSpacePointQuery(cpSpace*, cpVect*, cpLayers, cpGroup, cpSpacePointQueryFunc);
+void wrSpaceEachBody(cpSpace *space, cpSpaceBodyIteratorFunc func);
+void wrSpaceEachShape(cpSpace *space, cpSpaceShapeIteratorFunc func);
+void wrSpaceEachConstraint(cpSpace *space, cpSpaceConstraintIteratorFunc func);
 
 // From chipmunk_unsafe.h
 void wrCircleShapeSetOffset(cpShape*, cpVect*);

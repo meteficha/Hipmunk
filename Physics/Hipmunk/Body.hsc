@@ -56,7 +56,6 @@ module Physics.Hipmunk.Body
      applyForce,
      applyOnlyForce,
      applyImpulse,
-     applyDampedSpring,
 
      -- * Utilities
      localToWorld,
@@ -274,30 +273,6 @@ applyImpulse (B b) j r =
 
 foreign import ccall unsafe "wrapper.h"
     wrBodyApplyImpulse :: BodyPtr -> VectorPtr -> VectorPtr -> IO ()
-
-
--- | @dampedSpring (b1,a1) (b2,a2) rlen k dmp dt@ applies a damped
---   spring force between bodies @b1@ and @b2@ at anchors
---   @a1@ and @a2@, respectively. @k@ is the spring constant
---   (force\/distance), @rlen@ is the rest length of the spring,
---   @dmp@ is the damping constant (force\/velocity), and @dt@
---   is the time step to apply the force over. Both anchors are
---   in body coordinates.
---
---   Note: large damping values can be unstable, you should use
---   the damped spring constraint instead.
-applyDampedSpring :: (Body,Position) -> (Body,Position) -> Distance
-                  -> CpFloat -> Damping -> Time -> IO ()
-applyDampedSpring (B b1,a1) (B b2, a2) rlen k dmp dt =
-  withForeignPtr b1 $ \b1_ptr ->
-  withForeignPtr b2 $ \b2_ptr ->
-  with a1 $ \a1_ptr ->
-  with a2 $ \a2_ptr -> do
-    wrApplyDampedSpring b1_ptr b2_ptr a1_ptr a2_ptr rlen k dmp dt
-
-foreign import ccall unsafe "wrapper.h"
-    wrApplyDampedSpring :: BodyPtr -> BodyPtr -> VectorPtr -> VectorPtr
-                        -> CpFloat -> CpFloat -> CpFloat -> Time -> IO ()
 
 
 -- | For a vector @p@ in body @b@'s coordinates,

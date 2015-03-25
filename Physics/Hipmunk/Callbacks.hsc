@@ -244,11 +244,13 @@ shapes = do
     shA_ptr <- #{peek cpArbiter, a} arb_ptr
     shB_ptr <- #{peek cpArbiter, b} arb_ptr
     swapped <- #{peek cpArbiter, swappedColl} arb_ptr
-    shapeA  <- retriveShape spce shA_ptr
-    shapeB  <- retriveShape spce shB_ptr
-    if swapped
-      then return (shapeB, shapeA)
-      else return (shapeA, shapeB)
+    maybeshapeA  <- retrieveShape spce shA_ptr
+    maybeshapeB  <- retrieveShape spce shB_ptr
+    case (maybeshapeA, maybeshapeB) of
+      (Just shapeA, Just shapeB) -> if swapped
+                                       then return (shapeB, shapeA)
+                                       else return (shapeA, shapeB)
+      (_, _) -> fail "Physics.Hipmunk.Callbacks: expected shapes but got nothing!"
 
 -- | Space from where these shapes come from.
 space :: Callback t Space

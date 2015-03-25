@@ -106,7 +106,7 @@ redefineC (C c b1 b2) t = withForeignPtr c $ \c_ptr -> redef c_ptr b1 b2 t
 --   equal to the last value set globally with
 --   'setConstraintBiasCoef', which initially is @0.1@
 setBiasCoefC :: BiasCoef -> Constraint a -> IO ()
-setBiasCoefC b (C c _ _) = withForeignPtr c $ flip #{poke cpConstraint, biasCoef} b
+setBiasCoefC b (C c _ _) = withForeignPtr c $ flip #{poke cpConstraint, errorBias} b
 
 setMaxBias :: CpFloat -> Constraint a -> IO ()
 setMaxBias b (C c _ _) = withForeignPtr c $ flip #{poke cpConstraint, maxBias} b
