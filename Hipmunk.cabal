@@ -20,6 +20,10 @@ Description:
       Please see <http://hackage.haskell.org/package/HipmunkPlayground>
       for a demonstration of this library.
       .
+      Version 5.2.0.17:
+      .
+      * Relax constraints, esp. on StateVar. (Thanks, David McFarland!)
+      .
       Version 5.2.0.16:
       .
       * Bump dependency on transformers. (Thanks, Alfredo Di Napoli!)
